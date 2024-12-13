@@ -1,0 +1,73 @@
+# This is the detailed documenation, using ChatGPT/ Claude, Dec 12 2024 - Khursheed Khan
+
+# main.py Documentation
+
+## Purpose
+This Python script demonstrates how to handle employee data using object-oriented programming (OOP) principles. It makes use of `Employee` and `Person` classes to manage employee information, including their first name, last name, review date, and review rating. The script also implements functionality for reading and writing data to JSON files, as well as handling errors and user input through a menu interface.
+
+## Overview
+- **Classes**: The script defines two main classes, `Person` and `Employee`, to represent individual employee data.
+- **File Operations**: The script reads from and writes to a JSON file, handling exceptions appropriately.
+- **User Interface**: The script provides a basic text interface for the user to interact with the program.
+
+## Class Definitions
+
+### Person Class
+The `Person` class manages basic information about a person, such as their first and last names.
+
+#### Attributes:
+- `first_name` (str): The first name of the person.
+- `last_name` (str): The last name of the person.
+
+#### Methods:
+- **`__init__(self, user_first_name: str, user_last_name: str)`**: Initializes the first and last names of the person.
+- **`first_name`** (getter and setter): Ensures the first name is alphanumeric and capitalized.
+- **`last_name`** (getter and setter): Ensures the last name is alphanumeric and capitalized.
+- **`__str__(self)`**: Returns a string representation of the person's name in the format "First Name, Last Name".
+
+### Employee Class
+The `Employee` class inherits from `Person` and adds additional attributes related to the employee's review information.
+
+#### Attributes:
+- `review_date` (date): The date of the employee's review.
+- `review_rating` (int): The rating given to the employee (between 1 and 5).
+
+#### Methods:
+- **`__init__(self, employee_first_name: str, employee_last_name: str, employee_review_date: date | str, employee_review_rating: int)`**: Initializes employee data, including the first name, last name, review date, and review rating.
+- **`review_date`** (getter and setter): Ensures that the review date is a valid date or a string in the ISO 8601 format.
+- **`review_rating`** (getter and setter): Ensures that the review rating is an integer between 1 and 5.
+- **`__str__(self)`**: Returns a string representation of the employee, including their name, review date, and review rating.
+
+## Functions
+
+### FileProcessor Class
+The `FileProcessor` class provides static methods to read and write employee data to JSON files.
+
+#### Methods:
+- **`read_employee_data_from_file(file_name: str, employee_data: list)`**: Reads employee data from a JSON file and converts it into a list of `Employee` objects.
+  - If the file doesn't exist, it creates a new one.
+- **`write_employee_data_to_file(file_name: str, employee_data: list)`**: Writes employee data to a JSON file, formatting it as a list of dictionaries.
+
+### IO Class
+The `IO` class handles user input and output, allowing for interaction through the terminal.
+
+#### Methods:
+- **`output_error_messages(message: str, error: Exception)`**: Displays custom error messages along with the technical error details.
+- **`output_menu(menu: str)`**: Displays a formatted menu to the user.
+- **`input_menu_choice()`**: Prompts the user to select a menu option.
+- **`input_employee_data(employee_data: list)`**: Collects employee information from the user and adds it to the `employee_data` list.
+- **`output_employee_data(employee_data: list)`**: Displays the list of employees with their review date and rating.
+
+## Example Usage
+
+### Running the Script:
+1. The user is presented with a menu where they can select various options such as:
+   - Add a new employee.
+   - View existing employee data.
+   - Exit the program.
+
+2. The user can input employee data, including the first name, last name, review date, and review rating.
+
+3. The employee data is saved to a JSON file and can be reloaded when the program restarts.
+
+### Sample Input:
